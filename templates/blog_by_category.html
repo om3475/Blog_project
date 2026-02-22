@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <!--Feature Post-->
+  <h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">{{category_name}}</h3>
+
+  <div class="row mb-2">
+{% if posts %}
+{% for featured in posts %}
+    <div class="col-md-6">
+      <div class="card border-0" >
+        <div class="card-body">
+          <h3>{{featured.title}}</h3>
+          <small class="mb-1 text-muted">{{featured.created_at | timesince }} ago | {{featured.author}}</small>
+          <p class="card-text">{{featured.short_discription | truncatewords:20}}</p>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+{% else %}
+  <div class="col-md-6">
+      <div class="card border-0" >
+        <div class="card-body">
+          <p class="card-text">No Blog Available</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}
