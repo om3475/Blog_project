@@ -1,0 +1,80 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Django
+# =========================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media & Static (optional - adjust as needed)
+media/
+staticfiles/
+
+# Collected static files (production)
+static/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# =========================
+# Migrations (optional)
+# =========================
+# Uncomment if you DON'T want to track migrations
+# */migrations/*
+# !*/migrations/__init__.py
+
+# =========================
+# Testing / Coverage
+# =========================
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+
+# =========================
+# Node (if using frontend tools)
+# =========================
+node_modules/
+package-lock.json
+yarn.lock
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Docker (if used)
+# =========================
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
