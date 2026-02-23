@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import CharField
 
 class Category (models.Model):
     category_name = models.CharField(max_length=50,unique=True)
@@ -33,3 +34,28 @@ class Blog (models.Model):
      
     def __str__ (self):
         return self.title
+    
+class About_us (models.Model):
+    title = models.CharField(max_length=50)
+    discription = models.CharField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural ='About'
+
+   
+    def __str__ (self):
+        return self.title
+class Social (models.Model):
+    platform = models.CharField(max_length=50)
+    link = models.URLField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural ='Social Links'
+
+   
+    def __str__ (self):
+        return self.platform

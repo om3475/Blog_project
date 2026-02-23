@@ -23,9 +23,15 @@ from blogapp import urls
 import blogapp
 import blogapp.urls
 from . import views
+from blogapp import views as blog_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home,name='home'),
     path('category/', include('blogapp.urls')),
+    path('search/',blog_views.search_blog,name='search'),
+    path('<slug:slug>/',blog_views.single_blog,name='single_blog'),
+
+    
 ]+ static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
