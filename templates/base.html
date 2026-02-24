@@ -28,9 +28,14 @@
             </form> 
                
           </div>
+
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-warning" href="#">Login</a> &nbsp;
-            <a class="btn btn-sm btn-outline-secondary" href="#">Register</a>
+            {% if user.is_authenticated %}
+            <span>You Are Login As {{user}}<a href="{% url 'logout' %}"> &emsp; Log Out</a></span>
+            {% else %}
+            <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a> &nbsp;
+            <a class="btn btn-sm btn-outline-secondary" href="{%url 'registration' %}">Register</a>
+            {% endif %}
           </div>
         </div>
       </header>

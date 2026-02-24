@@ -31,7 +31,10 @@ urlpatterns = [
     path('', views.home,name='home'),
     path('category/', include('blogapp.urls')),
     path('search/',blog_views.search_blog,name='search'),
-    path('<slug:slug>/',blog_views.single_blog,name='single_blog'),
+    path('registration/',blog_views.registration,name='registration'),
+    path('login/',blog_views.user_login,name='login'),
+    path('logout/',blog_views.user_logout,name='logout'),
+    path('blogs/<slug:slug>/',blog_views.single_blog,name='single_blog'),
 
     
 ]+ static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

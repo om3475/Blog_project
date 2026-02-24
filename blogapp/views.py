@@ -1,9 +1,13 @@
 
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
+from .form import registration_form
 from blogapp.models import Blog, Category
 from django.db.models import Q
+from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth import authenticate ,login, logout 
+
 
 # Create your views here.
 def blog_by_category(request,category_id):
@@ -34,3 +38,35 @@ def search_blog(request):
      'keyword':keyword
    }
     return render(request,'search.html',context)
+
+def registration(request):
+    if request.POST:
+        form = registration_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('registration')
+        return render(request,'registration.html',{'form':registration_form()}) 
+    else:
+        form = registration_form()
+        context ={
+            'form':form
+        }
+     
+    
+        return render(request,'registration.html',context) 
+def user_login(request):
+    if request.POST:
+        form = AuthenticationForm(request,request.POST)
+        if  form.is_valid():
+            login(request,form.get_user())
+            return redirect('home')       
+        return render(request, 'login.html', {'form': form})
+    else:
+        form = AuthenticationForm()
+        context = {
+            'form':form
+        }
+        return render(request,'login.html',context)
+def user_logout(request):
+    logout(request)
+    return redirect('login')
