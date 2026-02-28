@@ -44,22 +44,21 @@ def registration(request):
         form = registration_form(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('registration')
-        return render(request,'registration.html',{'form':registration_form()}) 
+            return redirect('login')
+        return render(request,'registration.html',{'form':form}) 
     else:
         form = registration_form()
         context ={
             'form':form
         }
-     
-    
         return render(request,'registration.html',context) 
+    
 def user_login(request):
     if request.POST:
         form = AuthenticationForm(request,request.POST)
         if  form.is_valid():
             login(request,form.get_user())
-            return redirect('home')       
+            return redirect('dashboard')       
         return render(request, 'login.html', {'form': form})
     else:
         form = AuthenticationForm()
